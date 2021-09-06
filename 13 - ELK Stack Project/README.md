@@ -153,7 +153,6 @@ This document contains the following details:
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
 
 Load balancing ensures that the application will be highly available, in addition to restricting access to the network.
-- _TODO: What aspect of security do load balancers protect? What is the advantage of a jump box?_
 - The load balancer protects the network from DDoS attacks (denial of service) and helps to distribute the traffic between the servers. Addiontionally, it assists with preventing intruders by restricting access to the servers hosting the application.
 - A jump box is an admin workstation used to conduct administrative tasks in the network securely and allows admins to access the other servers to monitor and manage the environment.
 
@@ -198,7 +197,29 @@ A summary of the access policies in place can be found in the table below.
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because we are able to automate the installation on multiple servers easily and quickly without having to access each server manually. The services running can be limited, system installations and updates can be more efficient and would save alot of time.
 
 The playbook implements the following tasks:
-- _TODO: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
+- Installs Docker.io, pip3, Docker module.
+- '''
+-  # Use apt module
+    - name: Install docker.io
+      apt:
+        update_cache: yes
+        force_apt_get: yes
+        name: docker.io
+        state: present
+
+    # Use apt module
+    - name: Install python3-pip
+      apt:
+        force_apt_get: yes
+        name: python3-pip
+        state: present
+
+    # Use pip module (It will default to pip3)
+    - name: Install Docker module
+      pip:
+        name: docker
+        state: present
+  '''
 - ...
 - ...
 
