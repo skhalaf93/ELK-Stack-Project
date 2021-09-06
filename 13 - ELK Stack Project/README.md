@@ -293,10 +293,11 @@ SSH into the control node and follow the steps below:
   - [metricbeat_playbook.yml](yml_playbook_scripts/metricbeat_playbook.yml) - Installs and configures metricbeat on ELk and DVWA Servers
 - Where do you copy it?
   - /etc/ansible Directory
-- 
+
 - Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?
   
   - Update the /etc/ansible/hosts.cfg 
+  - adjust "hosts" in playbooks to reflect the specfic machines on which you want filebeat installed on.
   
 - _Which URL do you navigate to in order to check that the ELK server is running?
   - http://[Elk_VM_Public_IP]:5601/app/kibana
